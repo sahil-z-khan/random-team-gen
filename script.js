@@ -5,7 +5,9 @@ document.getElementById('generate').addEventListener('click', function() {
         return;
     }
 
-    const names = namesStr.split(',').map(name => name.trim()).filter(name => name);
+    // Refined regular expression to split by commas or spaces, handling multiple delimiters
+    const names = namesStr.split(/,|\s+/).map(name => name.trim()).filter(name => name.length > 0);
+
     if (names.length % 2 !== 0) {
         const proceed = confirm("The number of individuals is odd. Do you want to proceed?");
         if (!proceed) {
